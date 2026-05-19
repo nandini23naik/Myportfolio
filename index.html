@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nandini Naik | Dynamic Portfolio</title>
+<title>Nandini Naik | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,48 +15,50 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background:#020617;
-color:white;
+background:linear-gradient(-45deg,#eef7ff,#dbeafe,#f0f9ff,#eff6ff);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+color:#0f172a;
 overflow-x:hidden;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:8px;
+@keyframes bgMove{
+0%{
+background-position:0% 50%;
 }
-
-::-webkit-scrollbar-thumb{
-background:#38bdf8;
-border-radius:20px;
+50%{
+background-position:100% 50%;
+}
+100%{
+background-position:0% 50%;
+}
 }
 
 /* NAVBAR */
 
 nav{
-position:fixed;
 width:100%;
-top:0;
-padding:18px 8%;
+padding:20px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:rgba(2,6,23,0.85);
-backdrop-filter:blur(10px);
+position:fixed;
+top:0;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
 z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 .logo{
-font-size:30px;
-font-weight:800;
-background:linear-gradient(to right,#38bdf8,#818cf8);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+font-size:28px;
+font-weight:700;
+color:#2563eb;
 }
 
 nav ul{
@@ -65,14 +68,14 @@ list-style:none;
 }
 
 nav ul li a{
-color:white;
 text-decoration:none;
+color:#0f172a;
 font-weight:500;
 transition:0.3s;
 }
 
 nav ul li a:hover{
-color:#38bdf8;
+color:#2563eb;
 }
 
 /* HERO */
@@ -82,137 +85,111 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:0 8%;
-background:
-radial-gradient(circle at top left,#1e1b4b,#020617 40%),
-radial-gradient(circle at bottom right,#0f172a,#020617 50%);
-position:relative;
-overflow:hidden;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-width:500px;
-height:500px;
-background:#38bdf8;
-filter:blur(180px);
-opacity:0.15;
-top:-100px;
-right:-100px;
+text-align:center;
+padding:100px 8%;
 }
 
 .hero-content{
-text-align:center;
-z-index:1;
-animation:fadeUp 1.2s ease;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-10px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+.profile-pic{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:25px;
+border:5px solid white;
+box-shadow:0 10px 30px rgba(37,99,235,0.25);
 }
 
 .hero-content h1{
-font-size:75px;
+font-size:70px;
 line-height:1.1;
-font-weight:800;
 }
 
-.hero-content h1 span{
-background:linear-gradient(to right,#38bdf8,#818cf8);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero-content h2{
-margin-top:18px;
-font-size:28px;
-font-weight:400;
-color:#cbd5e1;
+.hero-content span{
+color:#2563eb;
 }
 
 .hero-content p{
 margin-top:20px;
-font-size:18px;
-color:#94a3b8;
-max-width:850px;
-line-height:1.8;
-}
-
-.btns{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
+font-size:20px;
+color:#334155;
+min-height:30px;
 }
 
 .btn{
-padding:15px 34px;
-border-radius:50px;
+display:inline-block;
+margin-top:35px;
+padding:14px 32px;
+background:#2563eb;
+color:white;
+border-radius:40px;
 text-decoration:none;
 font-weight:600;
-transition:0.4s;
-}
-
-.primary{
-background:#38bdf8;
-color:#020617;
-}
-
-.secondary{
-border:2px solid #38bdf8;
-color:#38bdf8;
+transition:0.3s;
 }
 
 .btn:hover{
-transform:translateY(-5px);
-box-shadow:0 10px 25px rgba(56,189,248,0.4);
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(37,99,235,0.3);
 }
 
-/* SECTION */
+/* SECTIONS */
 
 section{
 padding:100px 8%;
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .section-title{
-font-size:45px;
 text-align:center;
-margin-bottom:60px;
-font-weight:700;
-color:#38bdf8;
-}
-
-/* CARDS */
-
-.card{
-background:rgba(15,23,42,0.8);
-border:1px solid rgba(255,255,255,0.08);
-padding:35px;
-border-radius:25px;
-transition:0.4s;
-backdrop-filter:blur(12px);
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.4);
+font-size:40px;
+margin-bottom:50px;
+color:#2563eb;
 }
 
 /* ABOUT */
 
-.about-grid{
+.about{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
 }
 
-.card h3{
-margin-bottom:18px;
-font-size:24px;
-color:#38bdf8;
+.about-box{
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.4);
+padding:35px;
+border-radius:20px;
+transition:0.3s;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
 }
 
-.card p{
-line-height:1.9;
-color:#cbd5e1;
+.about-box:hover{
+transform:translateY(-10px);
 }
 
 /* SKILLS */
@@ -220,107 +197,51 @@ color:#cbd5e1;
 .skills-container{
 display:flex;
 flex-wrap:wrap;
-justify-content:center;
 gap:20px;
+justify-content:center;
 }
 
 .skill{
-padding:16px 28px;
-background:#0f172a;
-border:1px solid rgba(255,255,255,0.08);
-border-radius:18px;
-font-weight:500;
+background:white;
+padding:18px 28px;
+border-radius:15px;
 transition:0.3s;
+font-weight:500;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
 }
 
 .skill:hover{
-background:#38bdf8;
-color:#020617;
+background:#2563eb;
+color:white;
 transform:scale(1.08);
+box-shadow:0 10px 25px rgba(37,99,235,0.35);
 }
 
 /* PROJECTS */
 
 .projects-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
-}
-
-.project-card{
-background:#0f172a;
-padding:35px;
-border-radius:25px;
-transition:0.4s;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.project-card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-
-.project-card h3{
-margin-bottom:15px;
-color:#38bdf8;
-}
-
-/* SPORTS */
-
-.sports-grid{
-display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-.sport{
-padding:35px;
-background:#0f172a;
-border-radius:25px;
-transition:0.4s;
-text-align:center;
-}
-
-.sport:hover{
-transform:translateY(-10px);
-background:#111c38;
-}
-
-.sport h3{
-font-size:24px;
-margin-bottom:15px;
-color:#38bdf8;
-}
-
-.sport p{
-line-height:1.8;
-color:#cbd5e1;
-}
-
-/* ACHIEVEMENTS */
-
-.timeline{
-max-width:900px;
-margin:auto;
-}
-
-.timeline-item{
+.project-card{
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.4);
 padding:30px;
-margin-bottom:25px;
-background:#0f172a;
-border-left:5px solid #38bdf8;
-border-radius:15px;
+border-radius:20px;
+transition:0.3s;
+box-shadow:0 5px 20px rgba(0,0,0,0.06);
 }
 
-.timeline-item h4{
-font-size:22px;
-margin-bottom:10px;
-color:#38bdf8;
+.project-card:hover{
+transform:translateY(-10px);
 }
 
-.timeline-item p{
-color:#cbd5e1;
-line-height:1.8;
+.project-card h3{
+margin-bottom:15px;
+color:#2563eb;
 }
 
 /* CONTACT */
@@ -330,34 +251,27 @@ text-align:center;
 }
 
 .contact p{
-margin-top:18px;
+margin-top:15px;
 font-size:18px;
-color:#cbd5e1;
+}
+
+.contact a{
+color:#2563eb;
+text-decoration:none;
+font-weight:500;
+}
+
+.contact a:hover{
+text-decoration:underline;
 }
 
 /* FOOTER */
 
 footer{
-padding:30px;
 text-align:center;
-background:#01040f;
-color:#94a3b8;
-}
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
+padding:25px;
+background:#dbeafe;
+color:#334155;
 }
 
 /* RESPONSIVE */
@@ -365,15 +279,20 @@ transform:translateY(0);
 @media(max-width:900px){
 
 .hero-content h1{
-font-size:50px;
+font-size:48px;
 }
 
-.hero-content h2{
-font-size:22px;
+.about{
+grid-template-columns:1fr;
 }
 
 nav ul{
 display:none;
+}
+
+.profile-pic{
+width:140px;
+height:140px;
 }
 
 }
@@ -383,8 +302,6 @@ display:none;
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
 <div class="logo">Nandini.</div>
@@ -393,8 +310,8 @@ display:none;
 <li><a href="#about">About</a></li>
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="#certifications">Certifications</a></li>
 <li><a href="#sports">Sports</a></li>
-<li><a href="#achievements">Achievements</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
@@ -406,23 +323,13 @@ display:none;
 
 <div class="hero-content">
 
+<img src="photo.jpg" class="profile-pic">
+
 <h1>Hello, I'm <span>Nandini Naik</span></h1>
 
-<h2>MCA Student • Software Developer • Athlete</h2>
+<p id="typing"></p>
 
-<p>
-Passionate MCA student with strong skills in Java, Python, Web Development,
-DBMS, AI/ML, and Software Development. Alongside academics,
-I have represented at district, college, and university-level sports competitions.
-</p>
-
-<div class="btns">
-
-<a href="#projects" class="btn primary">View Projects</a>
-
-<a href="#contact" class="btn secondary">Contact Me</a>
-
-</div>
+<a href="#projects" class="btn">View My Work</a>
 
 </div>
 
@@ -434,32 +341,30 @@ I have represented at district, college, and university-level sports competition
 
 <h2 class="section-title">About Me</h2>
 
-<div class="about-grid">
+<div class="about">
 
-<div class="card">
+<div class="about-box">
 
-<h3>Education</h3>
+<h3>Who Am I?</h3>
 
-<p>
-Bachelor of Computer Applications (BCA)<br>
-Master of Computer Applications (MCA)<br><br>
-
-Focused on:
-Data Structures, DBMS, Operating Systems,
-Computer Networks, Java, Python,
-Machine Learning, and Advanced Web Technologies.
+<p style="margin-top:15px; line-height:1.8;">
+Passionate MCA student with interests in technology,
+leadership, sports, event hosting, and continuous learning.
+I enjoy connecting real-life experiences with technical knowledge
+while exploring opportunities that help me grow personally and professionally.
 </p>
 
 </div>
 
-<div class="card">
+<div class="about-box">
 
-<h3>Career Objective</h3>
+<h3>Extracurriculars</h3>
 
-<p>
-Aspiring software developer passionate about building innovative
-and impactful applications. Interested in AI/ML,
-full-stack development, and creating modern user experiences.
+<p style="margin-top:15px; line-height:1.8;">
+Actively involved in event hosting, organizing committees,
+research conferences, sports committees, and technical events.
+Experienced in balancing academics with extracurricular activities
+while working in collaborative environments.
 </p>
 
 </div>
@@ -478,23 +383,16 @@ full-stack development, and creating modern user experiences.
 
 <div class="skill">Java</div>
 <div class="skill">Python</div>
-<div class="skill">C++</div>
-<div class="skill">C Programming</div>
+<div class="skill">SQL</div>
+<div class="skill">DBMS</div>
 <div class="skill">HTML</div>
 <div class="skill">CSS</div>
 <div class="skill">JavaScript</div>
-<div class="skill">SQL</div>
-<div class="skill">DBMS</div>
-<div class="skill">Data Structures</div>
 <div class="skill">Machine Learning</div>
 <div class="skill">AI/ML</div>
-<div class="skill">Linux</div>
-<div class="skill">Web Development</div>
-<div class="skill">Operating Systems</div>
-<div class="skill">Computer Networks</div>
+<div class="skill">Cloud Computing</div>
 <div class="skill">GitHub</div>
-<div class="skill">Responsive Design</div>
-<div class="skill">Software Engineering</div>
+<div class="skill">Web Development</div>
 
 </div>
 
@@ -510,33 +408,42 @@ full-stack development, and creating modern user experiences.
 
 <div class="project-card">
 
-<h3>IPL Win Prediction System</h3>
+<h3>IPL Prediction Model</h3>
 
 <p>
-Developed a machine learning based IPL prediction system
-using Python and Flask with dynamic probability calculations.
+Combined my deep interest in sports with technology by creating an IPL Win Prediction Model using machine learning and sports analytics to predict match outcomes and winning probabilities.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CERTIFICATIONS -->
+
+<section id="certifications">
+
+<h2 class="section-title">Certifications</h2>
+
+<div class="projects-grid">
+
+<div class="project-card">
+
+<h3>NPTEL Java Programming</h3>
+
+<p>
+Scored 100% with Elite + Gold certification and ranked among top performers.
 </p>
 
 </div>
 
 <div class="project-card">
 
-<h3>Dynamic Portfolio Website</h3>
+<h3>NPTEL Cloud Computing</h3>
 
 <p>
-Created a fully responsive modern portfolio website
-using HTML, CSS, and JavaScript with animations.
-</p>
-
-</div>
-
-<div class="project-card">
-
-<h3>AI & Data Analysis Projects</h3>
-
-<p>
-Built mini projects using machine learning,
-data preprocessing, and predictive analytics.
+Scored 88% with Elite + Silver certification and ranked among the Top 5%.
 </p>
 
 </div>
@@ -549,97 +456,36 @@ data preprocessing, and predictive analytics.
 
 <section id="sports">
 
-<h2 class="section-title">Sports & Extracurriculars</h2>
+<h2 class="section-title">Sports & Leadership</h2>
 
-<div class="sports-grid">
+<div class="projects-grid">
 
-<div class="sport">
+<div class="project-card">
 
-<h3>🏀 Basketball</h3>
+<h3>Basketball</h3>
 
 <p>
-District Level Basketball Player<br><br>
-
-Represented and won at University Level competitions in Nagpur.
-Strong teamwork, leadership, and competitive experience.
+District-level basketball player representing Nagpur University and actively participated in university-level competitions.
 </p>
 
 </div>
 
-<div class="sport">
+<div class="project-card">
 
-<h3>🏸 Badminton</h3>
+<h3>Other Sports</h3>
 
 <p>
-College Level Badminton Player with participation
-in inter-college sports events and tournaments.
+Participated in badminton, cricket, skating, and table tennis while balancing academics and extracurricular activities.
 </p>
 
 </div>
 
-<div class="sport">
+<div class="project-card">
 
-<h3>🛼 Skating</h3>
-
-<p>
-Active skating participant at college level events,
-showcasing discipline and athletic consistency.
-</p>
-
-</div>
-
-<div class="sport">
-
-<h3>🏓 Table Tennis</h3>
+<h3>Leadership & Hosting</h3>
 
 <p>
-College Level Table Tennis player with strong
-focus, reflexes, and strategic gameplay.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ACHIEVEMENTS -->
-
-<section id="achievements">
-
-<h2 class="section-title">Achievements</h2>
-
-<div class="timeline">
-
-<div class="timeline-item">
-
-<h4>🏆 University Level Basketball Winner</h4>
-
-<p>
-Represented college in Nagpur University level competitions
-and contributed to winning performances.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h4>💻 Technical Skills & Development</h4>
-
-<p>
-Built projects in machine learning, web development,
-and predictive systems using modern technologies.
-</p>
-
-</div>
-
-<div class="timeline-item">
-
-<h4>🎯 Multi-Sport Athlete</h4>
-
-<p>
-Actively participated in Basketball, Badminton,
-Skating, and Table Tennis competitions.
+Experienced in hosting events, managing organizing committees, and participating in technical and sports activities.
 </p>
 
 </div>
@@ -652,31 +498,79 @@ Skating, and Table Tennis competitions.
 
 <section id="contact" class="contact">
 
-<h2 class="section-title">Contact Me</h2>
+<h2 class="section-title">Contact</h2>
 
-<p>📧 nandini@example.com</p>
+<p>
+Email:
+<a href="mailto:nandini23naik@gmail.com">
+nandini23naik@gmail.com
+</a>
+</p>
 
-<p>💼 linkedin.com/in/nandini-naik</p>
+<p>
+GitHub:
+<a href="https://github.com/nandini23naik" target="_blank">
+github.com/nandini23naik
+</a>
+</p>
 
-<p>💻 github.com/nandini</p>
-
-<div class="btns">
-
-<a href="#" class="btn primary">Download Resume</a>
-
-<a href="#" class="btn secondary">GitHub Profile</a>
-
-</div>
-
+<a href="./resume.pdf" class="resume-btn" download>
+    View My Resume
+</a>
 </section>
 
 <!-- FOOTER -->
 
 <footer>
 
-© 2026 Nandini Naik • Dynamic Portfolio Website
+© 2026 Nandini Naik | Portfolio Website
 
 </footer>
+
+<!-- JS -->
+
+<script>
+
+const text =
+"MCA Student • Developer • AI/ML Enthusiast • Sports Person";
+
+let i = 0;
+
+function typingEffect(){
+
+if(i < text.length){
+
+document.getElementById("typing").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(typingEffect,70);
+
+}
+
+}
+
+typingEffect();
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+sections.forEach(section=>{
+
+const sectionTop = section.getBoundingClientRect().top;
+
+if(sectionTop < window.innerHeight - 100){
+
+section.classList.add("show");
+
+}
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
